@@ -11,7 +11,6 @@ import { DetailsListLayoutMode,
     SelectionMode,
     IObjectWithKey,
     IDetailsColumnRenderTooltipProps, } from 'office-ui-fabric-react/lib/DetailsList';
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton } from 'office-ui-fabric-react/lib/components/Button/IconButton/IconButton';
 import { PrimaryButton, Panel, PanelType, IStackTokens, Stack, mergeStyleSets, Fabric, Dropdown, IDropdownStyles, IDropdownOption, IButtonStyles, DialogFooter, Announced, Dialog, SpinButton, DefaultButton, DatePicker, IDatePickerStrings, on, ScrollablePane, ScrollbarVisibility, Sticky, StickyPositionType, IRenderFunction, TooltipHost, mergeStyles, Spinner, SpinnerSize, TagPicker, ITag, IBasePickerSuggestionsProps, IInputProps, HoverCard, HoverCardType, Link } from 'office-ui-fabric-react';
 import { TextField, ITextFieldStyles, ITextField } from 'office-ui-fabric-react/lib/TextField';
@@ -1802,75 +1801,73 @@ const EditableGrid = (props: Props) => {
             {showFilterCallout && filterCalloutComponent}
             <div className={mergeStyles({ height: props.height != null ? props.height : '70vh', width: props.width != null ? props.width : '130vh', position: 'relative', backgroundColor: 'white', })}>
                 <ScrollablePane scrollbarVisibility={ScrollbarVisibility.auto}>
-                    <MarqueeSelection selection={_selection}>
-                        <DetailsList
-                            compact={true}
-                            items={defaultGridData.length > 0 ? defaultGridData.filter((x) => (x._grid_row_operation_ != Operation.Delete) && (x._is_filtered_in_ == true) && (x._is_filtered_in_grid_search_ == true) && (x._is_filtered_in_column_filter_ == true)) : []}
-                            columns={GridColumns}
-                            selectionMode={props.selectionMode}
-                            // layoutMode={props.layoutMode}
-                            // constrainMode={props.constrainMode}
-                            layoutMode={DetailsListLayoutMode.fixedColumns}
-                            constrainMode={ConstrainMode.unconstrained}
-                            selection={_selection}
-                            setKey="none"
-                            onRenderDetailsHeader={onRenderDetailsHeader}
-                            ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-                            ariaLabelForSelectionColumn="Toggle selection"
-                            checkButtonAriaLabel="Row checkbox"
+                    <DetailsList
+                        compact={true}
+                        items={defaultGridData.length > 0 ? defaultGridData.filter((x) => (x._grid_row_operation_ != Operation.Delete) && (x._is_filtered_in_ == true) && (x._is_filtered_in_grid_search_ == true) && (x._is_filtered_in_column_filter_ == true)) : []}
+                        columns={GridColumns}
+                        selectionMode={props.selectionMode}
+                        // layoutMode={props.layoutMode}
+                        // constrainMode={props.constrainMode}
+                        layoutMode={DetailsListLayoutMode.fixedColumns}
+                        constrainMode={ConstrainMode.unconstrained}
+                        selection={_selection}
+                        setKey="none"
+                        onRenderDetailsHeader={onRenderDetailsHeader}
+                        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+                        ariaLabelForSelectionColumn="Toggle selection"
+                        checkButtonAriaLabel="Row checkbox"
 
-                            ariaLabel={props.ariaLabel}
-                            ariaLabelForGrid={props.ariaLabelForGrid}
-                            ariaLabelForListHeader={props.ariaLabelForListHeader}
-                            cellStyleProps={props.cellStyleProps}
-                            checkboxCellClassName={props.checkboxCellClassName}
-                            checkboxVisibility={props.checkboxVisibility}
-                            className={props.className}
-                            columnReorderOptions={props.columnReorderOptions}
-                            componentRef={props.componentRef}
-                            disableSelectionZone={props.disableSelectionZone}
-                            dragDropEvents={props.dragDropEvents}
-                            enableUpdateAnimations={props.enableUpdateAnimations}
-                            enterModalSelectionOnTouch={props.enterModalSelectionOnTouch}
-                            getCellValueKey={props.getCellValueKey}
-                            getGroupHeight={props.getGroupHeight}
-                            getKey={props.getKey}
-                            getRowAriaDescribedBy={props.getRowAriaDescribedBy}
-                            getRowAriaLabel={props.getRowAriaLabel}
-                            groupProps={props.groupProps}
-                            groups={props.groups}
-                            indentWidth={props.indentWidth}
-                            initialFocusedIndex={props.initialFocusedIndex}
-                            isHeaderVisible={props.isHeaderVisible}
-                            isPlaceholderData={props.isPlaceholderData}
-                            listProps={props.listProps}
-                            minimumPixelsForDrag={props.minimumPixelsForDrag}
-                            onActiveItemChanged={props.onActiveItemChanged}
-                            onColumnHeaderClick={props.onColumnHeaderClick}
-                            onColumnHeaderContextMenu={props.onColumnHeaderContextMenu}
-                            onColumnResize={props.onColumnResize}
-                            onDidUpdate={props.onDidUpdate}
-                            onItemContextMenu={props.onItemContextMenu}
-                            onItemInvoked={props.onItemInvoked}
-                            onRenderCheckbox={props.onRenderCheckbox}
-                            onRenderDetailsFooter={props.onRenderDetailsFooter}
-                            onRenderItemColumn={props.onRenderItemColumn}
-                            onRenderMissingItem={props.onRenderMissingItem}
-                            onRenderRow={props.onRenderRow}
-                            onRowDidMount={props.onRowDidMount}
-                            onRowWillUnmount={props.onRowWillUnmount}
-                            onShouldVirtualize={props.onShouldVirtualize}
-                            rowElementEventMap={props.rowElementEventMap}
-                            selectionPreservedOnEmptyClick={props.selectionPreservedOnEmptyClick}
-                            selectionZoneProps={props.selectionZoneProps}
-                            shouldApplyApplicationRole={props.shouldApplyApplicationRole}
-                            styles={props.styles}
-                            useFastIcons={props.useFastIcons}
-                            usePageCache={props.usePageCache}
-                            useReducedRowRenderer={props.useReducedRowRenderer}
-                            viewport={props.viewport}
-                        />
-                    </MarqueeSelection>
+                        ariaLabel={props.ariaLabel}
+                        ariaLabelForGrid={props.ariaLabelForGrid}
+                        ariaLabelForListHeader={props.ariaLabelForListHeader}
+                        cellStyleProps={props.cellStyleProps}
+                        checkboxCellClassName={props.checkboxCellClassName}
+                        checkboxVisibility={props.checkboxVisibility}
+                        className={props.className}
+                        columnReorderOptions={props.columnReorderOptions}
+                        componentRef={props.componentRef}
+                        disableSelectionZone={props.disableSelectionZone}
+                        dragDropEvents={props.dragDropEvents}
+                        enableUpdateAnimations={props.enableUpdateAnimations}
+                        enterModalSelectionOnTouch={props.enterModalSelectionOnTouch}
+                        getCellValueKey={props.getCellValueKey}
+                        getGroupHeight={props.getGroupHeight}
+                        getKey={props.getKey}
+                        getRowAriaDescribedBy={props.getRowAriaDescribedBy}
+                        getRowAriaLabel={props.getRowAriaLabel}
+                        groupProps={props.groupProps}
+                        groups={props.groups}
+                        indentWidth={props.indentWidth}
+                        initialFocusedIndex={props.initialFocusedIndex}
+                        isHeaderVisible={props.isHeaderVisible}
+                        isPlaceholderData={props.isPlaceholderData}
+                        listProps={props.listProps}
+                        minimumPixelsForDrag={props.minimumPixelsForDrag}
+                        onActiveItemChanged={props.onActiveItemChanged}
+                        onColumnHeaderClick={props.onColumnHeaderClick}
+                        onColumnHeaderContextMenu={props.onColumnHeaderContextMenu}
+                        onColumnResize={props.onColumnResize}
+                        onDidUpdate={props.onDidUpdate}
+                        onItemContextMenu={props.onItemContextMenu}
+                        onItemInvoked={props.onItemInvoked}
+                        onRenderCheckbox={props.onRenderCheckbox}
+                        onRenderDetailsFooter={props.onRenderDetailsFooter}
+                        onRenderItemColumn={props.onRenderItemColumn}
+                        onRenderMissingItem={props.onRenderMissingItem}
+                        onRenderRow={props.onRenderRow}
+                        onRowDidMount={props.onRowDidMount}
+                        onRowWillUnmount={props.onRowWillUnmount}
+                        onShouldVirtualize={props.onShouldVirtualize}
+                        rowElementEventMap={props.rowElementEventMap}
+                        selectionPreservedOnEmptyClick={props.selectionPreservedOnEmptyClick}
+                        selectionZoneProps={props.selectionZoneProps}
+                        shouldApplyApplicationRole={props.shouldApplyApplicationRole}
+                        styles={props.styles}
+                        useFastIcons={props.useFastIcons}
+                        usePageCache={props.usePageCache}
+                        useReducedRowRenderer={props.useReducedRowRenderer}
+                        viewport={props.viewport}
+                    />
                 </ScrollablePane>
             </div>
             <Dialog hidden={!dialogContent} onDismiss={CloseRenameDialog} closeButtonAriaLabel="Close">
